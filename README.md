@@ -101,7 +101,7 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	    $record    = $response->getData();
 	    $returnResponse["status"] = "success";
 	    $returnResponse["response"] = $record;
-	  } catch (Exception $e) {
+	   }catch (Exception $e) {
 	    $strError = "($module) ERROR: ".$e->getMessage();
 	    $returnResponse["code"]   = $e->getCode();
 	    $returnResponse["status"] = "error";
@@ -118,21 +118,21 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	iii) Add Sample Code
 	<pre>
 	global $zc_zoho_config;
-		$returnResponse = array();
-		$module="Leads";
-		$recordID ="1234567890";
-		try {
-		ZCRMRestClient::initialize($zc_zoho_config);
-		$moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
-		$response  = $moduleIns->getRecord($recordID);
-		$record    = $response->getData();
-		$returnResponse["status"] = "success";
-		$returnResponse["response"] = $record;
-		} catch (Exception $e) {
-		$strError = "($module) ERROR: ".$e->getMessage();
-		$returnResponse["code"]   = $e->getCode();
-		$returnResponse["status"] = "error";
-		$returnResponse["response"] = $strError;
+	$returnResponse = array();
+	$module="Leads";
+	$recordID ="1234567890";
+	try {
+	  ZCRMRestClient::initialize($zc_zoho_config);
+	  $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
+	  $response  = $moduleIns->getRecord($recordID);
+	  $record    = $response->getData();
+	  $returnResponse["status"] = "success";
+	  $returnResponse["response"] = $record;
+	} catch (Exception $e) {
+	  $strError = "($module) ERROR: ".$e->getMessage();
+	  $returnResponse["code"]   = $e->getCode();
+	  $returnResponse["status"] = "error";
+	  $returnResponse["response"] = $strError;
 	}
 	print_r($returnResponse); 
 	</pre>
