@@ -90,24 +90,24 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	ii) Sample code:
 	<pre>
 	function testZohosdk(){
-	  global $zc_zoho_config;
-	  $returnResponse = array();
-	  $module="Leads";\n
-	  $recordID ="1234567890";
+	   global $zc_zoho_config;
+	   $returnResponse = array();
+	   $module="Leads";
+	   $recordID ="1234567890";
 	  try {
-	    ZCRMRestClient::initialize($zc_zoho_config);
-	    $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
-	    $response  = $moduleIns->getRecord($recordID);
-	    $record    = $response->getData();
-	    $returnResponse["status"] = "success";
-	    $returnResponse["response"] = $record;
+	     ZCRMRestClient::initialize($zc_zoho_config);
+	     $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
+	     $response  = $moduleIns->getRecord($recordID);
+	     $record    = $response->getData();
+	     $returnResponse["status"] = "success";
+	     $returnResponse["response"] = $record;
 	   }catch (Exception $e) {
-	    $strError = "($module) ERROR: ".$e->getMessage();
-	    $returnResponse["code"]   = $e->getCode();
-	    $returnResponse["status"] = "error";
-	    $returnResponse["response"] = $strError;
-	  }
-	  return $returnResponse; 
+	     $strError = "($module) ERROR: ".$e->getMessage();
+	     $returnResponse["code"]   = $e->getCode();
+	     $returnResponse["status"] = "error";
+	     $returnResponse["response"] = $strError;
+	   }
+	   return $returnResponse; 
 	}
 	add_action("get_header","testZohosdk");
 	</pre>
