@@ -114,17 +114,17 @@ The plugin installation is now complete and the integration between Zoho CRM 
 		$returnResponse = array();
 		$module="Leads";
 		$recordID ="1234567890";
-		try {
+	try {
 		ZCRMRestClient::initialize($zc_zoho_config);
 		$moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
 		$response  = $moduleIns->getRecord($recordID);
 		$record    = $response->getData();
 		$returnResponse["status"] = "success";
 		$returnResponse["response"] = $record;
-		} catch (Exception $e) {
+	} catch (Exception $e) {
 		$strError = "($module) ERROR: ".$e->getMessage();
 		$returnResponse["code"]   = $e->getCode();
 		$returnResponse["status"] = "error";
 		$returnResponse["response"] = $strError;
-		}
-		print_r($returnResponse); 
+	}
+	print_r($returnResponse); 
