@@ -1,0 +1,25 @@
+[2021-02-26 08:02:10] [authConnect] (1000.edbf5f9f71cfdb9eb2a83dd60e7b9471.348273e0adea8b9f3ab08ac3c6aabb17) ERROR: zcrmsdk\oauth\exception\ZohoOAuthException Caused by:'Exception while fetching access token from grant token - HTTP/1.1 200 
+Server: ZGS
+Date: Fri, 26 Feb 2021 08:02:10 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 24
+Connection: keep-alive
+Set-Cookie: 3e285c6f31=3abffb16f2a0ae3216f140ff23e68001; Path=/
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1
+Set-Cookie: iamcsr=0332b008-0782-4b68-89a6-faabe80734bb;path=/;SameSite=None;Secure;priority=high
+Set-Cookie: _zcsr_tmp=0332b008-0782-4b68-89a6-faabe80734bb;path=/;SameSite=Strict;Secure;priority=high
+X-Frame-Options: SAMEORIGIN
+Content-Language: en-US
+Strict-Transport-Security: max-age=63072000
+
+{"error":"invalid_code"}' in /opt/lampp/htdocs/testwp/wp-content/plugins/connect-zoho-crm-sdk/thirdparty/vendor/zohocrm/php-sdk-archive/src/oauth/ZohoOAuthClient.php(69)
+#0 /opt/lampp/htdocs/testwp/wp-content/plugins/connect-zoho-crm-sdk/includes/zohoHelper.php(66): zcrmsdk\oauth\ZohoOAuthClient->generateAccessToken('1000.edbf5f9f71...')
+#1 /opt/lampp/htdocs/testwp/wp-content/plugins/connect-zoho-crm-sdk/zconnect.php(123): ZCZohoHelper->authConnect('1000.edbf5f9f71...')
+#2 /opt/lampp/htdocs/testwp/wp-content/plugins/connect-zoho-crm-sdk/includes/settings-page.php(156): zc_call_auth('1000.edbf5f9f71...')
+#3 /opt/lampp/htdocs/testwp/wp-content/plugins/connect-zoho-crm-sdk/zconnect.php(146): include_once('/opt/lampp/htdo...')
+#4 /opt/lampp/htdocs/testwp/wp-includes/class-wp-hook.php(287): zc_setting_page('')
+#5 /opt/lampp/htdocs/testwp/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#6 /opt/lampp/htdocs/testwp/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#7 /opt/lampp/htdocs/testwp/wp-admin/admin.php(259): do_action('toplevel_page_c...')
+#8 {main}
