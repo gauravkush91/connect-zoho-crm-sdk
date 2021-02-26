@@ -1,5 +1,5 @@
 === Connect SDK for ZOHO CRM ===
-Tags: Zoho CRM SDK Connect WP, Zoho CRM Wordpress, Zoho CRM , CRM
+Tags: Connect Zoho CRM SDK for WP, Wordpress Zoho CRM SDK, Connect Zoho CRM, Wp Plugin for Zoho CRM
 Requires at least: 3.3
 Author: Gaurav K
 Tested up to: 5.4.1
