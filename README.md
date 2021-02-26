@@ -46,98 +46,98 @@ The plugin installation is now complete and the integration between Zoho CRM 
 
 **1) Copy this use statement and paste into your current theme functions.php at the very top**
 
-        use zcrmsdk\crm\crud\ZCRMAttachment;
-        use zcrmsdk\crm\crud\ZCRMCustomView;
-        use zcrmsdk\crm\crud\ZCRMCustomViewCategory;
-        use zcrmsdk\crm\crud\ZCRMCustomViewCriteria;
-        use zcrmsdk\crm\crud\ZCRMEventParticipant;
-        use zcrmsdk\crm\crud\ZCRMField;
-        use zcrmsdk\crm\crud\ZCRMInventoryLineItem;
-        use zcrmsdk\crm\crud\ZCRMJunctionRecord;
-        use zcrmsdk\crm\crud\ZCRMLayout;
-        use zcrmsdk\crm\crud\ZCRMLeadConvertMapping;
-        use zcrmsdk\crm\crud\ZCRMLeadConvertMappingField;
-        use zcrmsdk\crm\crud\ZCRMLookupField;
-        use zcrmsdk\crm\crud\ZCRMModule;
-        use zcrmsdk\crm\crud\ZCRMModuleRelatedList;
-        use zcrmsdk\crm\crud\ZCRMModuleRelation;
-        use zcrmsdk\crm\crud\ZCRMNote;
-        use zcrmsdk\crm\crud\ZCRMOrgTax;
-        use zcrmsdk\crm\crud\ZCRMPermission;
-        use zcrmsdk\crm\crud\ZCRMPickListValue;
-        use zcrmsdk\crm\crud\ZCRMPriceBookPricing;
-        use zcrmsdk\crm\crud\ZCRMProfileCategory;
-        use zcrmsdk\crm\crud\ZCRMTrashRecord;
-        use zcrmsdk\crm\crud\ZCRMTax;
-        use zcrmsdk\crm\crud\ZCRMTag;
-        use zcrmsdk\crm\crud\ZCRMSection;
-        use zcrmsdk\crm\crud\ZCRMRelatedListProperties;
-        use zcrmsdk\crm\crud\ZCRMRecord;
-        use zcrmsdk\crm\crud\ZCRMProfileSection;
-        use zcrmsdk\crm\exception\ZCRMException;
-        use zcrmsdk\crm\setup\org\ZCRMOrganization;
-        use zcrmsdk\crm\setup\restclient\ZCRMRestClient;
-        use zcrmsdk\crm\setup\users\ZCRMProfile;
-        use zcrmsdk\crm\setup\users\ZCRMRole;
-        use zcrmsdk\crm\setup\users\ZCRMUser;
-        use zcrmsdk\crm\setup\users\ZCRMUserCustomizeInfo;
-        use zcrmsdk\crm\setup\users\ZCRMUserTheme;
-        use zcrmsdk\oauth\ZohoOAuth;
-        use zcrmsdk\oauth\ZohoOAuthClient;
+use zcrmsdk\crm\crud\ZCRMAttachment;
+use zcrmsdk\crm\crud\ZCRMCustomView;
+use zcrmsdk\crm\crud\ZCRMCustomViewCategory;
+use zcrmsdk\crm\crud\ZCRMCustomViewCriteria;
+use zcrmsdk\crm\crud\ZCRMEventParticipant;
+use zcrmsdk\crm\crud\ZCRMField;
+use zcrmsdk\crm\crud\ZCRMInventoryLineItem;
+use zcrmsdk\crm\crud\ZCRMJunctionRecord;
+use zcrmsdk\crm\crud\ZCRMLayout;
+use zcrmsdk\crm\crud\ZCRMLeadConvertMapping;
+use zcrmsdk\crm\crud\ZCRMLeadConvertMappingField;
+use zcrmsdk\crm\crud\ZCRMLookupField;
+use zcrmsdk\crm\crud\ZCRMModule;
+use zcrmsdk\crm\crud\ZCRMModuleRelatedList;
+use zcrmsdk\crm\crud\ZCRMModuleRelation;
+use zcrmsdk\crm\crud\ZCRMNote;
+use zcrmsdk\crm\crud\ZCRMOrgTax;
+use zcrmsdk\crm\crud\ZCRMPermission;
+use zcrmsdk\crm\crud\ZCRMPickListValue;
+use zcrmsdk\crm\crud\ZCRMPriceBookPricing;
+use zcrmsdk\crm\crud\ZCRMProfileCategory;
+use zcrmsdk\crm\crud\ZCRMTrashRecord;
+use zcrmsdk\crm\crud\ZCRMTax;
+use zcrmsdk\crm\crud\ZCRMTag;
+use zcrmsdk\crm\crud\ZCRMSection;
+use zcrmsdk\crm\crud\ZCRMRelatedListProperties;
+use zcrmsdk\crm\crud\ZCRMRecord;
+use zcrmsdk\crm\crud\ZCRMProfileSection;
+use zcrmsdk\crm\exception\ZCRMException;
+use zcrmsdk\crm\setup\org\ZCRMOrganization;
+use zcrmsdk\crm\setup\restclient\ZCRMRestClient;
+use zcrmsdk\crm\setup\users\ZCRMProfile;
+use zcrmsdk\crm\setup\users\ZCRMRole;
+use zcrmsdk\crm\setup\users\ZCRMUser;
+use zcrmsdk\crm\setup\users\ZCRMUserCustomizeInfo;
+use zcrmsdk\crm\setup\users\ZCRMUserTheme;
+use zcrmsdk\oauth\ZohoOAuth;
+use zcrmsdk\oauth\ZohoOAuthClient;
 
 **2) You can use any zoho SDK function into wordpress hooks function.**
 <pre>
-	i) Define global variable inside function : global $zc_zoho_config;
-	ii) Sample code:
-	
-	function testZohosdk(){
-	   global $zc_zoho_config;
-	   $returnResponse = array();
-	   $module="Leads";
-	   $recordID ="1234567890";
-	  try {
-	     ZCRMRestClient::initialize($zc_zoho_config);
-	     $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
-	     $response  = $moduleIns->getRecord($recordID);
-	     $record    = $response->getData();
-	     $returnResponse["status"] = "success";
-	     $returnResponse["response"] = $record;
-	   }catch (Exception $e) {
-	     $strError = "($module) ERROR: ".$e->getMessage();
-	     $returnResponse["code"]   = $e->getCode();
-	     $returnResponse["status"] = "error";
-	     $returnResponse["response"] = $strError;
-	   }
-	   return $returnResponse; 
-	}
-	add_action("get_header","testZohosdk");
-   
+i) Define global variable inside function : global $zc_zoho_config;
+ii) Sample code:
+
+function testZohosdk(){
+   global $zc_zoho_config;
+   $returnResponse = array();
+   $module="Leads";
+   $recordID ="1234567890";
+  try {
+     ZCRMRestClient::initialize($zc_zoho_config);
+     $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
+     $response  = $moduleIns->getRecord($recordID);
+     $record    = $response->getData();
+     $returnResponse["status"] = "success";
+     $returnResponse["response"] = $record;
+   }catch (Exception $e) {
+     $strError = "($module) ERROR: ".$e->getMessage();
+     $returnResponse["code"]   = $e->getCode();
+     $returnResponse["status"] = "error";
+     $returnResponse["response"] = $strError;
+   }
+   return $returnResponse; 
+}
+add_action("get_header","testZohosdk");
+
    </pre>
          
 **3) You can call the zoho sdk functions into you template file also.**
 <pre>
-	i) Copy the required use statement from Step 
-	ii)Define global variable: global $zc_zoho_config;
-	iii) Add Sample Code
-	
-	global $zc_zoho_config;
-	$returnResponse = array();
-	$module="Leads";
-	$recordID ="1234567890";
-	try {
-	  ZCRMRestClient::initialize($zc_zoho_config);
-	  $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
-	  $response  = $moduleIns->getRecord($recordID);
-	  $record    = $response->getData();
-	  $returnResponse["status"] = "success";
-	  $returnResponse["response"] = $record;
-	} catch (Exception $e) {
-	  $strError = "($module) ERROR: ".$e->getMessage();
-	  $returnResponse["code"]   = $e->getCode();
-	  $returnResponse["status"] = "error";
-	  $returnResponse["response"] = $strError;
-	}
-	print_r($returnResponse); 
+i) Copy the required use statement from Step 
+ii)Define global variable: global $zc_zoho_config;
+iii) Add Sample Code
+
+global $zc_zoho_config;
+$returnResponse = array();
+$module="Leads";
+$recordID ="1234567890";
+try {
+  ZCRMRestClient::initialize($zc_zoho_config);
+  $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
+  $response  = $moduleIns->getRecord($recordID);
+  $record    = $response->getData();
+  $returnResponse["status"] = "success";
+  $returnResponse["response"] = $record;
+} catch (Exception $e) {
+  $strError = "($module) ERROR: ".$e->getMessage();
+  $returnResponse["code"]   = $e->getCode();
+  $returnResponse["status"] = "error";
+  $returnResponse["response"] = $strError;
+}
+print_r($returnResponse); 
 </pre>
 
 
