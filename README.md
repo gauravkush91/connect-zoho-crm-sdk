@@ -86,7 +86,7 @@ The plugin installation is now complete and the integration between Zoho CRM 
         use zcrmsdk\oauth\ZohoOAuthClient;
 
 **2) You can use any zoho SDK function into wordpress hooks function.**
-	<pre>
+<pre>
 	i) Define global variable inside function : global $zc_zoho_config;
 	ii) Sample code:
 	
@@ -111,14 +111,15 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	   return $returnResponse; 
 	}
 	add_action("get_header","testZohosdk");
-	
-	</pre>
+   
+   </pre>
          
-3) You can call the zoho sdk functions into you template file also.
+**3) You can call the zoho sdk functions into you template file also.**
+<pre>
 	i) Copy the required use statement from Step 
 	ii)Define global variable: global $zc_zoho_config;
 	iii) Add Sample Code
-	<pre>
+	
 	global $zc_zoho_config;
 	$returnResponse = array();
 	$module="Leads";
@@ -137,7 +138,7 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	  $returnResponse["response"] = $strError;
 	}
 	print_r($returnResponse); 
-	</pre>
+</pre>
 
 
 **== Screenshots ==**
