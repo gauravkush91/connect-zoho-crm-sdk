@@ -89,7 +89,7 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	i) Define global variable inside function : global $zc_zoho_config;
 	ii) Sample code:
 	<code>
-	function testZohosdk(){\n
+	function testZohosdk(){<br/>
 	  global $zc_zoho_config;\n
 	  $returnResponse = array();\n
 	  $module="Leads";\n
