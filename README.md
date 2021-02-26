@@ -89,11 +89,11 @@ The plugin installation is now complete and the integration between Zoho CRM 
 	i) Define global variable inside function : global $zc_zoho_config;
 	ii) Sample code:
 	<code>
-	function testZohosdk(){
-	  global $zc_zoho_config;
-	  $returnResponse = array();
-	  $module="Leads";
-	  $recordID ="1234567890";
+	function testZohosdk(){\n
+	  global $zc_zoho_config;\n
+	  $returnResponse = array();\n
+	  $module="Leads";\n
+	  $recordID ="1234567890";\n
 	  try {
 	    ZCRMRestClient::initialize($zc_zoho_config);
 	    $moduleIns = ZCRMRestClient::getInstance()->getModuleInstance($module);
