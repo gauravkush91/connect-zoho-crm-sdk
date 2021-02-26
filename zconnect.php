@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Connect SDK for ZOHO CRM  
+Plugin Name: Connect ZOHO CRM SDK 
 Description: Connect to Zoho CRM API by PHP SDK 2.2.1. This plugin is used to estabilshed connection between zoho crm and Wordpress website.
 By using PHP SDK, You can perform Zoho crm option from wordpress site to zoho crm.
 
@@ -55,7 +55,7 @@ function zc_define_url_constants() {
   zc_defaultdefinemethod('ZC_BASE_DIR_URI', plugin_dir_path(ZC_PLUGINFILE));
   zc_defaultdefinemethod('ZC_BASE_SLUG', 'connect-zoho-crm-sdk');
   zc_defaultdefinemethod('ZC_BASE_DIR', WP_PLUGIN_URL . '/' . ZC_BASE_SLUG . '/');
-  zc_defaultdefinemethod('ZC_PLUGIN_NAME_SETTINGS', 'Zoho CRM SDK Connect Settings');
+  zc_defaultdefinemethod('ZC_PLUGIN_NAME_SETTINGS', 'Connect Zoho CRM SDK Settings');
   zc_defaultdefinemethod('ZC_PLUGIN_VERSION', '1.0');
   zc_defaultdefinemethod('ZC_PLUGIN_NAME', 'Zoho Connect');
   zc_defaultdefinemethod('ZC_PLUGIN_BASE_URL', site_url() . '/wp-admin/admin.php?page='.ZC_BASE_SLUG);
